@@ -131,7 +131,7 @@ namespace PlatformBuilder
             Projectile.width = 20;
             Projectile.height = 20;
             Projectile.friendly = true;
-            Projectile.timeLeft = 1;
+            Projectile.timeLeft = -1;
         }
         public override bool? CanDamage()
         {
