@@ -35,10 +35,15 @@ namespace PlatformBuilder
         [Range(1, 1000)]
         public int PlatLength;
 
-        [Header("火把种类")]
-        [Label("超亮火把（开）普通火把（关）")]
-        [DefaultValue(true)]
-        public bool IsUltraLight;
+        [Label("火把种类")]
+        [OptionStrings(new string[]
+        {
+            "超亮火把",
+            "白火把", 
+            "火把"
+        })]
+        [DefaultValue("超亮火把")]
+        public string TorchType;
 
     }
 }

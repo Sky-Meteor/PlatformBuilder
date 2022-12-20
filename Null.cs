@@ -57,7 +57,7 @@ namespace PlatformBuilder
                                     if (xPosition * 8 < Main.maxTilesX)
                                     {
                                         WorldGen.PlaceWall(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, WallID.Glass);
-                                        WorldGen.PlaceTile(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, TileID.Torches, false, false, -1, PBConfig.Instance.IsUltraLight ? 12 : 0);
+                                        WorldGen.PlaceTile(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, TileID.Torches, false, false, -1, GetTorchType());
                                     }
                                 }
                                 else
@@ -71,7 +71,7 @@ namespace PlatformBuilder
                                             (!PBConfig.Instance.IsLeft && xPosition * 8 <= (int)(Projectile.position.X / 16.0f) + 1 + PBConfig.Instance.PlatLength && xPosition * 8 >= (int)(Projectile.position.X / 16.0f) + 1)))
                                         {
                                             WorldGen.PlaceWall(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, WallID.Glass);
-                                            WorldGen.PlaceTile(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, TileID.Torches, false, false, -1, PBConfig.Instance.IsUltraLight ? 12 : 0);
+                                            WorldGen.PlaceTile(xPosition * 8, yPosition - PBConfig.Instance.TorchFromTile, TileID.Torches, false, false, -1, GetTorchType());
                                         }
                                     }
                                 }
@@ -82,7 +82,7 @@ namespace PlatformBuilder
                                 WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f));
 
                                 WorldGen.PlaceWall(xPosition * 8, (int)(Projectile.position.Y / 16.0f + 1), WallID.Glass);
-                                WorldGen.PlaceTile(xPosition * 8, (int)(Projectile.position.Y / 16.0f + 1), TileID.Torches, false, false, -1, PBConfig.Instance.IsUltraLight ? 12 : 0);
+                                WorldGen.PlaceTile(xPosition * 8, (int)(Projectile.position.Y / 16.0f + 1), TileID.Torches, false, false, -1, GetTorchType());
                             }
                             else if (PlatBuilder.ClearOnly)
                             {
@@ -108,6 +108,16 @@ namespace PlatformBuilder
                     }
                 }
             }
+        }
+        static int GetTorchType()
+        {
+            return PBConfig.Instance.TorchType switch
+            {
+                "超亮火把" => 12,
+                "白火把" => 5,
+                "火把" => 0,
+                _ => 12,
+            };
         }
     }
 }
