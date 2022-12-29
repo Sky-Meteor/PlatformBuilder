@@ -1,4 +1,4 @@
 displayName = 平台建造工具
 author = Furgo_
-version = 1.4.0
+version = 1.4.1
 includeSource = true
