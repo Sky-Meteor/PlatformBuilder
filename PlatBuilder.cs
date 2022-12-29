@@ -22,8 +22,8 @@ namespace PlatformBuilder
         private int mode = 1;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("平台/物块构造");
-            Tooltip.SetDefault("左键生成玻璃平台，附带超亮火把\n右键切换模式\n输入/pb命令和查看Mod Configuration获得更多信息");
+            DisplayName.SetDefault("速建平台/物块");
+            Tooltip.SetDefault("左键生成玻璃平台，附带超亮火把\n右键切换模式\n输入/pb命令和查看模组配置获得更多信息");
         }
         public override void SetDefaults()
         {
