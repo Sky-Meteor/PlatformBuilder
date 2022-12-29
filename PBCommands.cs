@@ -91,7 +91,7 @@ namespace PlatformBuilder
                 {
                     if (int.TryParse(args[1], out int type))
                     {
-                        if (type < 0 || type > 33)
+                        if (type < 0 || type > 34)
                         {
                             throw new UsageException("输入的数字不在范围内");
                         }
@@ -102,170 +102,175 @@ namespace PlatformBuilder
                                 Null.TileIDs = TileID.WoodBlock;
                                 Main.NewText("成功将物块更改为木材");
                             }
-                            if (type == 1)
+                            else if (type == 1)
                             {
                                 Null.TileIDs = TileID.GreenDungeonBrick;
                                 Main.NewText("成功将物块更改为绿砖");
                             }
-                            if (type == 2)
+                            else if (type == 2)
                             {
                                 Null.TileIDs = TileID.BlueDungeonBrick;
                                 Main.NewText("成功将物块更改为蓝砖");
                             }
-                            if (type == 3)
+                            else if (type == 3)
                             {
                                 Null.TileIDs = TileID.PinkDungeonBrick;
                                 Main.NewText("成功将物块更改为粉砖");
                             }
-                            if (type == 4)
+                            else if (type == 4)
                             {
                                 Null.TileIDs = TileID.LihzahrdBrick;
                                 Main.NewText("成功将物块更改为丛林蜥蜴砖");
                             }
-                            if (type == 5)
+                            else if (type == 5)
                             {
                                 Null.TileIDs = TileID.ObsidianBrick;
                                 Main.NewText("成功将物块更改为黑曜石砖");
                             }
-                            if (type == 6)
+                            else if (type == 6)
                             {
                                 Null.TileIDs = TileID.StoneSlab;
                                 Main.NewText("成功将物块更改为石板");
                             }
-                            if (type == 7)
+                            else if (type == 7)
                             {
                                 Null.TileIDs = TileID.GrayBrick;
                                 Main.NewText("成功将物块更改为灰砖");
                             }
-                            if (type == 8)
+                            else if (type == 8)
                             {
                                 Null.TileIDs = TileID.RedBrick;
                                 Main.NewText("成功将物块更改为红砖");
                             }
-                            if (type == 9)
+                            else if (type == 9)
                             {
                                 Null.TileIDs = TileID.SandstoneBrick;
                                 Main.NewText("成功将物块更改为沙岩砖");
                             }
-                            if (type == 10)
+                            else if (type == 10)
                             {
                                 Null.TileIDs = TileID.RainbowBrick;
                                 Main.NewText("成功将物块更改为彩虹砖");
                             }
-                            if (type == 11)
+                            else if (type == 11)
                             {
                                 Null.TileIDs = TileID.GraniteBlock;
                                 Main.NewText("成功将物块更改为光面花岗岩块");
                             }
-                            if (type == 12)
+                            else if (type == 12)
                             {
                                 Null.TileIDs = TileID.MarbleBlock;
                                 Main.NewText("成功将物块更改为光面大理石块");
                             }
-                            if (type == 13)
+                            else if (type == 13)
                             {
                                 Null.TileIDs = TileID.Ebonwood;
                                 Main.NewText("成功将物块更改为乌木");
                             }
-                            if (type == 14)
+                            else if (type == 14)
                             {
                                 Null.TileIDs = TileID.RichMahogany;
                                 Main.NewText("成功将物块更改为红木");
                             }
-                            if (type == 15)
+                            else if (type == 15)
                             {
                                 Null.TileIDs = TileID.Pearlwood;
                                 Main.NewText("成功将物块更改为珍珠木");
                             }
-                            if (type == 16)
+                            else if (type == 16)
                             {
                                 Null.TileIDs = TileID.Shadewood;
                                 Main.NewText("成功将物块更改为暗影木");
                             }
-                            if (type == 17)
+                            else if (type == 17)
                             {
                                 Null.TileIDs = TileID.SpookyWood;
                                 Main.NewText("成功将物块更改为阴森木");
                             }
-                            if (type == 18)
+                            else if (type == 18)
                             {
                                 Null.TileIDs = TileID.DynastyWood;
                                 Main.NewText("成功将物块更改为王朝木");
                             }
-                            if (type == 19)
+                            else if (type == 19)
                             {
                                 Null.TileIDs = TileID.BorealWood;
                                 Main.NewText("成功将物块更改为针叶木");
                             }
-                            if (type == 20)
+                            else if (type == 20)
                             {
                                 Null.TileIDs = TileID.PalmWood;
                                 Main.NewText("成功将物块更改为棕榈木");
                             }
-                            if (type == 21)
+                            else if (type == 21)
                             {
                                 Null.TileIDs = TileID.Glass;
                                 Main.NewText("成功将物块更改为玻璃");
                             }
-                            if (type == 22)
+                            else if (type == 22)
                             {
                                 Null.TileIDs = TileID.TeamBlockBlue;
                                 Main.NewText("成功将物块更改为蓝团队块");
                             }
-                            if (type == 23)
+                            else if (type == 23)
                             {
                                 Null.TileIDs = TileID.TeamBlockGreen;
                                 Main.NewText("成功将物块更改为绿团队块");
                             }
-                            if (type == 24)
+                            else if (type == 24)
                             {
                                 Null.TileIDs = TileID.TeamBlockPink;
                                 Main.NewText("成功将物块更改为粉团队块");
                             }
-                            if (type == 25)
+                            else if (type == 25)
                             {
                                 Null.TileIDs = TileID.TeamBlockRed;
                                 Main.NewText("成功将物块更改为红团队块");
                             }
-                            if (type == 26)
+                            else if (type == 26)
                             {
                                 Null.TileIDs = TileID.TeamBlockWhite;
                                 Main.NewText("成功将物块更改为白团队块");
                             }
-                            if (type == 27)
+                            else if (type == 27)
                             {
                                 Null.TileIDs = TileID.TeamBlockYellow;
                                 Main.NewText("成功将物块更改为黄团队块");
                             }
-                            if (type == 28)
+                            else if (type == 28)
                             {
                                 Null.TileIDs = TileID.SnowBlock;
                                 Main.NewText("成功将物块更改为雪块");
                             }
-                            if (type == 29)
+                            else if (type == 29)
                             {
                                 Null.TileIDs = TileID.SnowBrick;
                                 Main.NewText("成功将物块更改为雪砖");
                             }
-                            if (type == 30)
+                            else if (type == 30)
                             {
                                 Null.TileIDs = TileID.DemoniteBrick;
                                 Main.NewText("成功将物块更改为魔矿砖");
                             }
-                            if (type == 31)
+                            else if (type == 31)
                             {
                                 Null.TileIDs = TileID.CrimtaneBrick;
                                 Main.NewText("成功将物块更改为猩红矿砖");
                             }
-                            if (type == 32)
+                            else if (type == 32)
                             {
                                 Null.TileIDs = TileID.LunarBrick;
                                 Main.NewText("成功将物块更改为夜明砖");
                             }
-                            if (type == 33)
+                            else if (type == 33)
                             {
                                 Null.TileIDs = TileID.ChlorophyteBrick;
                                 Main.NewText("成功将物块更改为叶绿砖");
+                            }
+                            else if (type == 34)
+                            {
+                                Null.TileIDs = TileID.MinecartTrack;
+                                Main.NewText("成功将物块更改为矿车轨道");
                             }
                         }
                     }

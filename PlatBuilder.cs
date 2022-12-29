@@ -17,7 +17,9 @@ namespace PlatformBuilder
         public static bool TorchOnly = false;
         public static bool ClearOnly = false;
         public static bool BlockMode = false;
-        public int mode = 1;
+        public static bool ActuatorMode = false;
+        public static bool ActuatorRevert = false;
+        private int mode = 1;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("平台/物块构造");
@@ -49,44 +51,42 @@ namespace PlatformBuilder
             {
                 mode += 1;
 
-                if (mode == 1)
+                switch (mode)
                 {
-                    CombatText.NewText(player.Hitbox, Color.Orange, "火把+平台");
-
-                    TorchOnly = false;
-                    ClearOnly = false;
-                    BlockMode = false;
-                }
-                else if (mode == 2)
-                {
-                    CombatText.NewText(player.Hitbox, Color.Orange, "只放火把");
-
-                    TorchOnly = true;
-                    ClearOnly = false;
-                    BlockMode = false;
-                }
-                else if (mode == 3)
-                {
-                    CombatText.NewText(player.Hitbox, Color.Orange, "只清理方块");
-
-                    TorchOnly = false;
-                    ClearOnly = true;
-                    BlockMode = false;
-                }
-                else if (mode == 4)
-                {
-                    CombatText.NewText(player.Hitbox, Color.Orange, "放置方块");
-
-                    BlockMode = true;
-                }
-                else if (mode == 5)
-                {
-                    mode = 1;
-                    CombatText.NewText(player.Hitbox, Color.Orange, "火把+平台");
-
-                    TorchOnly = false;
-                    ClearOnly = false;
-                    BlockMode = false;
+                    case 1:
+                        Default:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "火把+平台");
+                        TorchOnly = false;
+                        ClearOnly = false;
+                        BlockMode = false;
+                        ActuatorMode = false;
+                        ActuatorRevert = false;
+                        break;
+                    case 2:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "只放火把");
+                        TorchOnly = true;
+                        break;
+                    case 3:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "只清理方块");
+                        TorchOnly = false;
+                        ClearOnly = true;
+                        break;
+                    case 4:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "放置方块");
+                        BlockMode = true;
+                        break;
+                    case 5:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "虚化方块");
+                        ActuatorMode = true;
+                        break;
+                    case 6:
+                        CombatText.NewText(player.Hitbox, Color.Orange, "还原虚化方块");
+                        ActuatorMode = false;
+                        ActuatorRevert = true;
+                        break;
+                    default:
+                        mode = 1;
+                        goto Default;
                 }
             }
             else

@@ -1,6 +1,7 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
+using Terraria.DataStructures;
 
 namespace PlatformBuilder
 {
@@ -35,15 +36,12 @@ namespace PlatformBuilder
                     int yPosition = (int)(y + Projectile.position.Y / 16.0f);
                     if (xPosition < 0 || xPosition >= Main.maxTilesX || yPosition < 0 || yPosition >= Main.maxTilesY)
                         continue;
-                    Tile tile = Main.tile[xPosition, yPosition];
-                    if (tile == null)
-                    {
-                        continue;
-                    }
+                    Tile tile = Framing.GetTileSafely(xPosition, yPosition + 1);
+
                     if (y < 0 && !PlatBuilder.ClearOnly && !PlatBuilder.TorchOnly)
                     {
-                        WorldGen.KillWall(xPosition, yPosition + 1);
-                        WorldGen.KillTile(xPosition, yPosition + 1);
+                        WorldGen.KillWall(xPosition, (int)(Projectile.position.Y / 16.0f));
+                        WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f), false, false, true);
                     }
                     if (y == 0)
                     {
@@ -79,21 +77,33 @@ namespace PlatformBuilder
                             else if (PlatBuilder.TorchOnly)
                             {
                                 WorldGen.KillWall(xPosition, (int)(Projectile.position.Y / 16.0f));
-                                WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f));
+                                WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f), false, false, true);
 
                                 WorldGen.PlaceWall(xPosition * 8, (int)(Projectile.position.Y / 16.0f + 1), WallID.Glass);
                                 WorldGen.PlaceTile(xPosition * 8, (int)(Projectile.position.Y / 16.0f + 1), TileID.Torches, false, false, -1, GetTorchType());
                             }
                             else if (PlatBuilder.ClearOnly)
                             {
-                                WorldGen.KillWall(xPosition, (int)(Projectile.position.Y / 16.0f + 1));
-                                WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f + 1));
+                                WorldGen.KillWall(xPosition, (int)(Projectile.position.Y / 16.0f));
+                                WorldGen.KillTile(xPosition, (int)(Projectile.position.Y / 16.0f), false, false, true);
                             }
                         }
                         else
                         {
                             if (PBConfig.Instance.WorldPlat)
                             {
+                                if (PlatBuilder.ActuatorMode)
+                                {
+                                    if (!tile.IsActuated)
+                                        tile.IsActuated = true;
+                                    continue;
+                                }
+                                else if (PlatBuilder.ActuatorRevert)
+                                {
+                                    if (tile.IsActuated)
+                                        tile.IsActuated = false;
+                                    continue;
+                                }
                                 WorldGen.PlaceTile(xPosition, yPosition + 1, TileIDs, false, false, -1, 0);
                             }
                             else
@@ -101,6 +111,19 @@ namespace PlatformBuilder
                                 for (int X = 0; X < PBConfig.Instance.PlatLength; X++)
                                 {
                                     int PosX = (int)(Projectile.position.X / 16.0f) + 1 + (PBConfig.Instance.IsLeft ? -X : X);
+                                    Tile tile1 = Framing.GetTileSafely(PosX, yPosition + 1);
+                                    if (PlatBuilder.ActuatorMode)
+                                    {
+                                        if (!tile1.IsActuated)
+                                            tile1.IsActuated = true;
+                                        continue;
+                                    }
+                                    else if (PlatBuilder.ActuatorRevert)
+                                    {
+                                        if (tile1.IsActuated)
+                                            tile1.IsActuated = false;
+                                        continue;
+                                    }
                                     WorldGen.PlaceTile(PosX, yPosition + 1, TileIDs, false, false, -1, 0);
                                 }
                             }
